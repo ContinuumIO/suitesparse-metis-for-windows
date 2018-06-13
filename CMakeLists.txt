@@ -321,3 +321,5 @@ install(
 	DESTINATION
 		${ConfigPackageLocation}
 )
+
+INCLUDE_DIRECTORIES($ENV{LIBRARY_INC})
