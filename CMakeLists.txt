@@ -252,14 +252,9 @@ if(SuiteSparse_LAPACK_BLAS_LIB_DIR) # "Export" the imported targets in config.cm
 	set_property(TARGET lapack PROPERTY IMPORTED_IMPLIB 	\${_SuiteSparse_PREFIX}/${SuiteSparse_LAPACK_BLAS_LIB_DIR}/liblapack.lib)")
 endif()
 
-IF(BUILD_METIS)
-	set(SuiteSparse_LINKER_METIS_LIBS "metis")
-	## namespaced library target for config
-	set(SuiteSparse_EXPORTED_METIS_LIBS "SuiteSparse::metis")
-else()
-	set(SuiteSparse_LINKER_METIS_LIBS "")
-	set(SuiteSparse_EXPORTED_METIS_LIBS "")
-ENDIF()
+set(SuiteSparse_LINKER_METIS_LIBS "metis")
+## namespaced library target for config
+set(SuiteSparse_EXPORTED_METIS_LIBS "SuiteSparse::metis")
 
 add_subdirectory(SuiteSparse)
 

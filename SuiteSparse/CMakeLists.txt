@@ -1,23 +1,5 @@
 PROJECT(SuiteSparse)
 
-# Set optimized building:
-IF(CMAKE_COMPILER_IS_GNUCXX AND NOT CMAKE_BUILD_TYPE MATCHES "Debug")
-	set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -O3")
-	set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -O3")
-	# only optimize for native processer when NOT cross compiling
-	if(NOT CMAKE_CROSSCOMPILING)
-		set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -mtune=native")
-		set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -mtune=native")
-	endif(NOT CMAKE_CROSSCOMPILING)
-ENDIF(CMAKE_COMPILER_IS_GNUCXX AND NOT CMAKE_BUILD_TYPE MATCHES "Debug")
-
-# Global flags:
-IF (BUILD_METIS)
-	INCLUDE_DIRECTORIES("${METIS_SOURCE_DIR}/include")
-ELSE (BUILD_METIS)
-	ADD_DEFINITIONS(-DNPARTITION)
-ENDIF ( BUILD_METIS)
-
 # Disable COMPLEX numbers: disable it by default, since it causes problems in some platforms.
 SET(HAVE_COMPLEX OFF CACHE BOOL "Enables building SuiteSparse with complex numbers (disabled by default to avoid problems in some platforms)")
 IF (NOT HAVE_COMPLEX)
