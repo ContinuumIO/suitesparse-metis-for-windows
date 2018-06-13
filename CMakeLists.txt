@@ -5,7 +5,7 @@
 # Updated by jesnault (jerome.esnault@inria.fr) 2014-01-21
 # -----------------------------------------------------------------
 
-PROJECT(SuiteSparseProject)
+PROJECT(SuiteSparseProject C CXX)
 
 cmake_minimum_required(VERSION 2.8.10)
 
@@ -163,6 +163,8 @@ macro(declare_suitesparse_library targetName srcsList headersList)
 	SET_TARGET_PROPERTIES(${targetName} PROPERTIES
 		OUTPUT_NAME ${SP_LIB_PREFIX}${targetName}
 	)
+
+  set_target_properties(${targetName} PROPERTIES LINKER_LANGUAGE CXX)
 
 	target_link_libraries(${targetName}
 			 ${dsl_TARGET_PUBLIC_LINK} suitesparseconfig ## suitesparseconfig is used for every projects (embedded into cmake build)
