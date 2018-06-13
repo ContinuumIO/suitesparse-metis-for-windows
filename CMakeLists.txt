@@ -5,7 +5,7 @@
 # Updated by jesnault (jerome.esnault@inria.fr) 2014-01-21
 # -----------------------------------------------------------------
 
-PROJECT(SuiteSparseProject C CXX)
+PROJECT(SuiteSparseProject)
 
 cmake_minimum_required(VERSION 2.8.10)
 
